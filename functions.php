@@ -1,15 +1,6 @@
 // Don't call the file directly
 if ( !defined( 'ABSPATH' ) ) exit;
-/**
- * Register our styles
- *
- * @return void
- */
-function lp_register_widget_styles() {
-	wp_register_style( 'latest-posts-widget', plugins_url( 'latest-posts-widget/latest-posts.css' ) );
-	wp_enqueue_style( 'latest-posts-widget' );
-}
-add_action( 'wp_enqueue_scripts', 'lp_register_widget_styles' );
+
 /**
  * Register thumbnail sizes.
  *
@@ -31,7 +22,7 @@ add_action( 'init', 'lp_add_image_size' );
  */
 class LP_Post_Widget extends WP_Widget {
 	function __construct() {
-		$widget_ops = array( 'classname'   => 'latest-posts-widget', 'description' => __( 'List latest posts of your site with thumbnails' ) );
+		$widget_ops = array( 'classname'   => 'latest-posts-widget', 'description' => __( 'Listado de los últimos posts' ) );
 		parent::__construct( 'latest-posts-widget', __( 'Últimas Noticias' ), $widget_ops );
 	}
 	// Displays latest posts widget on blog.
